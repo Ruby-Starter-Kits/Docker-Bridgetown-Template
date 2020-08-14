@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Your First Post on Bridgetown"
-date:   2020-08-14 15:50:47 +0000
+date:   2020-08-14 16:17:55 +0000
 categories: updates
 ---
 
