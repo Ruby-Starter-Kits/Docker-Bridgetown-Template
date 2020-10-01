@@ -4,18 +4,21 @@
 version: '2.4'
 
 x-app: &app
-  image: bridgetown:latest
+  image: bridgetown:0.1.0
   mem_limit: 512m
   build:
     context: .
     dockerfile: Dockerfile
+    # Targeting the development stage won't run bundle/yarn when building the docker image.
+    # It means you can add a new gem or NPM package without having to wait for docker to rebuild.
     target: development
-  env_file:
-    - .env
   volumes:
     - .:/usr/src/app:cached
+    # Cache package folders so they persist between runs.
     - bundler:/usr/local/bundle:delegated
     - node_modules:/usr/src/app/node_modules:delegated
+  tmpfs:
+    - /tmp
 
 services:
   web:
