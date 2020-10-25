@@ -6,6 +6,8 @@ version: '2.4'
 x-app: &app
   image: bridgetown:0.1.0
   mem_limit: 512m
+  tmpfs:
+    - /tmp
   build:
     context: .
     dockerfile: Dockerfile
