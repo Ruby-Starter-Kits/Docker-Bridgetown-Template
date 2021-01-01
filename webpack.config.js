@@ -18,6 +18,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    modules: [
+      path.resolve(__dirname, 'frontend', 'javascript'),
+      path.resolve(__dirname, 'frontend', 'styles'),
+      path.resolve('./node_modules')
+    ],
+    alias: {
+      bridgetownComponents: path.resolve(__dirname, "src", "_components")
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -48,6 +56,7 @@ module.exports = {
           },
         },
       },
+      
       {
         test: /\.(s[ac]|c)ss$/,
         use: [
@@ -65,6 +74,7 @@ module.exports = {
           },
         ],
       },
+      
       {
         test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
         loader: "file-loader",
